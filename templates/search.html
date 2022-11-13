@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>单词搜索</title>
+        <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <input id="inputKeyword" placeholder="请输入单词"><button id="btnSearch">搜索</button>
+        <pre id="jsonData">暂无数据</pre>
+        <script>
+            $("#inputKeyword").change(function(){
+                let keyWordValue = $("#inputKeyword").val();
+                $.get("api/word/search",{search_words: keyWordValue},function(res){
+                    if(res.code == 0) {
+                        $("#jsonData").text(JSON.stringify(res.data,null,2)); 
+                    }
+                });
+            });
+            $("#btnSearch").click(function(){
+                let keyWordValue = $("#inputKeyword").val();
+                $.get("/api/word/search",{search_words: keyWordValue},function(res){
+                    if(res.code == 0) {
+                        $("#jsonData").text(JSON.stringify(res.data,null,2)); 
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

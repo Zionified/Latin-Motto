@@ -1,0 +1,12 @@
+.vscode/
+env/
+venv/
+db.sqlite3
+*.pyc
+*.pyo
+*.swo
+*.swp
+*.json
+uploads/
+*.apk
+package/
